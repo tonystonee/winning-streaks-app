@@ -21,7 +21,7 @@ import { Delete as DeleteIcon } from '@mui/icons-material'; // For delete icon
 // Define a list of positive emojis for tagging
 const positiveEmojis = [
   '✨', '🎉', '🚀', '🌟', '💪', '💖', '💡', '🌈', '🏆', '✅',
-  '👍', '👏', '🥳', '🤩', '💯', '😊', '😁', '🥳', '🎊', '💫'
+  '👍', '👏', '🥳', '🤩', '💯', '😊', '😁', '🥳', '�', '💫'
 ];
 
 // Create a custom Material-UI theme with psychologically positive colors
@@ -41,8 +41,8 @@ const theme = createTheme({
       paper: '#FFFFFF', // White for cards/surfaces
     },
     text: {
-      primary: '#424242', // Dark grey for readability
-      secondary: '#757575', // Medium grey
+      primary: '#1A237E', // Adjusted: Darker Indigo for better visibility on light backgrounds
+      secondary: '#37474F', // Adjusted: Darker Blue Grey for better visibility
     },
   },
   typography: {
@@ -51,20 +51,20 @@ const theme = createTheme({
       fontFamily: 'Baloo 2, sans-serif', // H1 title uses Baloo 2
       fontSize: '3.5rem',
       fontWeight: 700,
-      color: '#FF7043', // Deep Orange 400 for a vibrant title
+      color: '#311B92', // Deep Purple 900 - Darker, strong contrast for H1
       textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
     },
     h2: {
       fontFamily: 'Baloo 2, sans-serif', // H2 titles use Baloo 2
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#FF7043', // Deep Orange 400
+      color: '#424242', // Dark Grey 800 - Good contrast for H2
     },
     h3: { // New typography variant for the subheading
       fontFamily: 'Quicksand, sans-serif',
       fontSize: '1.5rem',
       fontWeight: 500,
-      color: '#4CAF50', // Green 500 for a fresh, positive feel
+      color: '#1B5E20', // Dark Green 800 - Darker, strong contrast for subheading
       mb: 2, // Margin bottom for spacing
     },
     body1: {
@@ -319,14 +319,15 @@ const App = () => {
         // Removed maxWidth to allow full width
         // disableGutters removes the default horizontal padding of the Container
         disableGutters
+        maxWidth="false"
         sx={{
-          width: '100vw', // Ensure it takes full viewport width
           minHeight: '100vh', // Ensure it takes full viewport height
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           // Removed py: 4 here as it will be applied to inner content
           bgcolor: 'background.default',
+          // Reverted gradient to the light blue to light yellow
           background: 'linear-gradient(135deg, #E3F2FD 0%, #FFFDE7 100%)', // Light blue to light yellow gradient
         }}
       >
@@ -489,7 +490,7 @@ const App = () => {
                 },
               }}
             >
-              Add Tiny Win!
+              Add Win!
             </Button>
           </Paper>
 
@@ -523,8 +524,8 @@ const App = () => {
                     <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}> {/* Added flexGrow */}
                       <Typography variant="h4" component="span" sx={{ mr: 2 }}>{win.emoji}</Typography>
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}> {/* Simplified this Box */}
-                        <Typography variant="body1" sx={{ fontWeight: 'medium' }}>{win.text}</Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body1" sx={{ fontWeight: 'medium', color: 'text.primary' }}>{win.text}</Typography> {/* Explicitly set color */}
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}> {/* Explicitly set color */}
                           {new Date(win.timestamp).toLocaleDateString()} at {new Date(win.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </Typography>
                         {/* userId is no longer displayed for local storage version */}
