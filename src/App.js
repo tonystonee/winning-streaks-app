@@ -51,7 +51,7 @@ const theme = createTheme({
     fontFamily: 'Raleway, sans-serif', // Default body font is Raleway
     h1: {
       fontFamily: 'Baloo 2, sans-serif', // H1 title uses Baloo 2
-      fontSize: '3.5rem',
+      fontSize: { xs: '2.5rem', sm: '3.5rem' }, // Responsive font size for H1
       fontWeight: 700,
       color: '#311B92', // Deep Purple 900 - Darker, strong contrast for H1
       textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
@@ -64,7 +64,7 @@ const theme = createTheme({
     },
     h3: { // New typography variant for the subheading
       fontFamily: 'Quicksand, sans-serif',
-      fontSize: '1.5rem',
+      fontSize: { xs: '1.2rem', sm: '1.5rem' }, // Responsive font size for H3
       fontWeight: 500,
       color: '#1B5E20', // Dark Green 800 - Darker, strong contrast for subheading
       mb: 2, // Margin bottom for spacing
@@ -401,7 +401,16 @@ const App = () => {
             <Typography variant="h2" component="h2" gutterBottom sx={{ mb: 3 }}>
               Celebrate a Tiny Win!
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 3 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row', // Always a row
+                gap: { xs: 1, sm: 2 }, // Reduce gap on small screens
+                mb: 3,
+                alignItems: 'center', // Always center vertically
+                flexWrap: 'nowrap', // Ensure they don't wrap
+              }}
+            >
               <TextField
                 fullWidth
                 label="What's your tiny win today?"
@@ -420,9 +429,9 @@ const App = () => {
                   variant="contained"
                   color="primary"
                   sx={{
-                    minWidth: '64px', // Ensure button is square for emoji
-                    height: '56px', // Match TextField height
-                    fontSize: '2rem',
+                    minWidth: { xs: '48px', sm: '64px' }, // Smaller minWidth on xs
+                    height: { xs: '48px', sm: '56px' }, // Smaller height on xs
+                    fontSize: { xs: '1.5rem', sm: '2rem' }, // Smaller font size on xs
                     boxShadow: '0px 4px 8px rgba(0,0,0,0.15)',
                     '&:hover': {
                       bgcolor: 'primary.dark',
