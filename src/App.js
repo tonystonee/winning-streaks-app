@@ -319,8 +319,9 @@ const App = () => {
         // Removed maxWidth to allow full width
         // disableGutters removes the default horizontal padding of the Container
         disableGutters
-        maxWidth="false"
+        maxWidth={false}
         sx={{
+          width: '100vw', // Ensure it takes full viewport width
           minHeight: '100vh', // Ensure it takes full viewport height
           display: 'flex',
           flexDirection: 'column',
