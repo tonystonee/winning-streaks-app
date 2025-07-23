@@ -21,7 +21,7 @@ import { Delete as DeleteIcon } from '@mui/icons-material'; // For delete icon
 // Define a list of positive emojis for tagging
 const positiveEmojis = [
   '✨', '🎉', '🚀', '🌟', '💪', '💖', '💡', '🌈', '🏆', '✅',
-  '👍', '👏', '🥳', '🤩', '💯', '😊', '😁', '🥳', '�', '💫'
+  '👍', '👏', '🥳', '🤩', '💯', '😊', '😁', '🥳', '🎊', '💫'
 ];
 
 // Create a custom Material-UI theme with psychologically positive colors
@@ -29,6 +29,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#64B5F6', // Light Blue 300 - cheerful, optimistic
+      dark: '#2196F3', // Darker Blue 500
     },
     secondary: {
       main: '#FFB300', // Amber 600 - energetic, warm
@@ -43,6 +44,7 @@ const theme = createTheme({
     text: {
       primary: '#1A237E', // Adjusted: Darker Indigo for better visibility on light backgrounds
       secondary: '#37474F', // Adjusted: Darker Blue Grey for better visibility
+      light: '#FFFFFF', // New: White for text on dark backgrounds
     },
   },
   typography: {
@@ -489,6 +491,7 @@ const App = () => {
                 '&:hover': {
                   bgcolor: 'secondary.dark',
                 },
+                color: 'text.primary', // Changed button text color to dark primary text
               }}
             >
               Add Win!
@@ -515,7 +518,8 @@ const App = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      bgcolor: 'primary.light', // Light primary background for list items
+                      // Changed background to primary.dark for better contrast with white text
+                      bgcolor: 'primary.dark',
                       transition: 'all 0.3s ease-in-out',
                       '&:hover': {
                         boxShadow: '0px 4px 10px rgba(0,0,0,0.1)',
@@ -525,8 +529,9 @@ const App = () => {
                     <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}> {/* Added flexGrow */}
                       <Typography variant="h4" component="span" sx={{ mr: 2 }}>{win.emoji}</Typography>
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}> {/* Simplified this Box */}
-                        <Typography variant="body1" sx={{ fontWeight: 'medium', color: 'text.primary' }}>{win.text}</Typography> {/* Explicitly set color */}
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}> {/* Explicitly set color */}
+                        {/* Changed text color to white for better contrast on dark background */}
+                        <Typography variant="body1" sx={{ fontWeight: 'medium', color: 'white' }}>{win.text}</Typography>
+                        <Typography variant="body2" sx={{ color: 'white' }}> {/* Also changed timestamp color to white */}
                           {new Date(win.timestamp).toLocaleDateString()} at {new Date(win.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </Typography>
                         {/* userId is no longer displayed for local storage version */}
